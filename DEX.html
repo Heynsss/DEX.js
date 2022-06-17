@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My first DEX</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!--first the bootstrap then our css file.  Otherwise we could overwrite the bootstrap file-->
+    <!--for containers, rows, coloms,...-->
+    <link rel="stylesheet" href="DEX.css">
+    </head>
+
+  <body>
+    <div class="container">
+        <div class="row"> <!--div.row and then tab gives you a div with 'row' as a class-->
+            <div class="col-12 col-md-6"> 
+                <!--
+                    Bootstrap has 12 units in 1 row
+                    every colom can have a number
+                    ex. col-6 => then it occupies 6 units out of 12
+                    without a number the coloms are distributed equally
+                    we can add breakpoints (for xsmall to xxlarge screensizes)
+                -->
+                <h1>Moralis Swap</h1>
+            </div>
+            <div class="col-12 col-md-6 de-flex align-items-center justify-content-md-center"> 
+                <!--here the coloms are next to each other in a large screen and under each other for smaller screens
+                    align-items-center => centers the buttons vertically
+                    justify-content-md-center => centers the buttons horizontally for medium and above screensizes en for smaller screens left
+                -->
+                <button class="btn btn-success btn-sm" id="btn-login">Moralis Metamask Login</button>
+                <button class="btn btn-success btn-sm" id="btn-buy-crypto">Buy Crypto</button>
+                <button class="btn btn-danger btn-sm" id="btn-logout">Logout</button>
+                <!--
+                    all buttons get a makeover with the classes and bootstrap file
+                    you can find all kind of buttons in the bootstrap docs
+
+                -->
+            </div>
+        </div> 
+      
+      
+      <table class="table table-dark table-striped">
+          <!--
+              this makes a dark striped background when your balances come on the screen
+              table-striped => makes sure you have different colors for different rows
+          -->
+          <thead>
+              <tr>
+                  <th>#</th>
+                  <th>Symbol</th>
+                  <th>Amount</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody class="js-token-balance"></tbody>
+      </table>
+      <div>
+        <br />
+        <span id="myethAddress"> </span>
+      </div>
+      <form action="#" method="post" class="exchange-form">
+        <div class="row">
+            <div class="col-12 col-md-6 mb-2">
+            <label>
+                <span class="js-form-token"></span>
+                Amount:
+                <input type="text" name="from-amount" class="js-form-amount" disabled />
+            </label>
+            <div class="js-amount-errror error"></div>    
+            </div>
+            <div class="col-12 col-md-6">
+                <label>
+                    Swap to:
+                    <select name="to-token"></select>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="js-submit btn btn-success btn-sm" disabled>Get Quote</button>
+                <button class="js-cancel btn btn-warning btn-sm" disabled>Cancel</button>
+            </div>
+            <!--
+                inside a class='col' otherwise they would be stretched all over the screen because bootstrap is based on flexbox
+                btn-success makes the button green
+                btn-warning makes the button yellow
+                btn-sm makes the button smaller
+            -->
+        </div>
+        <div class="js-quote-container"></div>
+
+      </form>
+    </div>
+    <!-- Moralis SDK code -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./DEX.js"></script>
+  </body>
+</html>
+
+<!--<script src="https://unpkg.com/moralis@1.5.0/dist/moralis.js"></script>-->
+<!--<script https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js></script>-->
